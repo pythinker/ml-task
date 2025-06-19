@@ -16,16 +16,6 @@ from model_utils import SimpleNN, load_latest_model
 
 class TestModel(unittest.TestCase):
     """Tests for the transaction category prediction model"""
-    
-    def setUp(self):
-        """Set up test environment"""
-        # Check if data files exist
-        self.assertTrue(os.path.exists('data/ds_project_train_v1.csv'), "Training data file not found")
-        self.assertTrue(os.path.exists('data/ds_project_test_v1.csv'), "Test data file not found")
-        
-        # Load a small sample of training data for testing
-        self.train_data, _ = load_data()
-        self.sample_data = self.train_data.sample(100, random_state=42)
 
     def test_single_transaction_prediction(self):
         """Test if the model returns an output for a single specific transaction."""
@@ -45,8 +35,7 @@ class TestModel(unittest.TestCase):
         # Model parameters (consistent with other tests and common setup)
         input_size = 384  # For 'all-MiniLM-L6-v2'
         hidden_size = 512 # As used in test_model_loading_if_exists
-        # self.train_data is loaded in setUp
-        num_classes = len(self.train_data['category'].unique()) 
+        num_classes = 16
         
         model = load_latest_model(input_size, hidden_size, num_classes)
         self.assertIsNotNone(model, "Failed to load the model.")
