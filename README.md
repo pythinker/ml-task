@@ -39,6 +39,10 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+2. Make two folders name `data` and `embeddings`.
+
+3. Copy train and test files (`ds_project_test_v1.csv` and `ds_project_test_v1.csv`) to `data` folder.
+
 ## Usage
 
 ### 1. Training the Model
@@ -90,7 +94,7 @@ To create a rich input for the model, we concatenate the transaction description
 The system uses a deep neural network with the following characteristics:
 - **Embeddings**: Transaction descriptions are converted into 384-dimensional vectors using the `sentence-transformers` library with the `all-MiniLM-L6-v2` model.
 - **Network**: The model is a feed-forward neural network with three fully-connected layers (two hidden layers with 512 neurons each and one output layer). It uses ReLU activation functions and Dropout for regularization.
-- **Training**: The model is trained with a batch size of 64.
+- **Training**: The model is trained with a batch size of 64 for 10 epochs.
 
 ## Evaluation
 
