@@ -12,8 +12,6 @@ This project implements a machine learning system that automatically classifies 
 ├── embeddings/                # Generated sentence embeddings
 ├── figures/                   # Generated figures (after running the scripts)
 │   ├── loss_plot.png
-│   ├── confusion_matrix.png
-│   └── shap_force_plot.html
 ├── models/                    # Saved models (after training)
 ├── results/                   # Evaluation results (after running the scripts)
 │   ├── validation_report.txt
@@ -21,7 +19,6 @@ This project implements a machine learning system that automatically classifies 
 ├── src/                       # Source code
 │   ├── train_model.py         # Script to train the model
 │   ├── test_model.py          # Script to run tests
-│   ├── model_explainability.py # Script for model explainability analysis
 │   ├── data_utils.py          # Data utility functions
 │   └── model_utils.py         # Model utility functions
 ├── predictions.csv            # Generated predictions (after running the scripts)
@@ -39,7 +36,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2. Make two folders name `data` and `embeddings`.
+2. Make two folders named `data` and `embeddings`.
 
 3. Copy train and test files (`ds_project_test_v1.csv` and `ds_project_test_v1.csv`) to `data` folder.
 
@@ -67,23 +64,9 @@ To run the test suite:
 python src/test_model.py
 ```
 
-This script will:
-- Verify the data format.
-- Test the embedding generation process.
-- Check that a trained model can be loaded correctly.
+This script will includes a test (`test_single_transaction_prediction`) that feeds a single, specific, hardcoded transaction to a loaded model and verifies that the model produces an output. This test ensures the model's prediction pathway is functional for individual inputs.
 
-### 3. Model Explainability Analysis
-
-To analyze feature importance and model explainability:
-
-```bash
-python src/model_explainability.py
-```
-
-This script will:
-- Load the most recently trained model.
-- Generate a confusion matrix to visualize performance.
-- Use SHAP (`DeepExplainer`) to generate and save a plot explaining a model prediction.
+These tests are designed to be run as part of a Continuous Integration (CI) pipeline to automatically verify the basic functionality and integrity of the data processing, model loading, and prediction mechanisms before changes are merged or deployed.
 
 ## Model Details
 
@@ -140,26 +123,4 @@ In a production environment, this system could be deployed as follows:
 
 1. **API Service**: The trained model could be wrapped in a REST API using Flask or FastAPI, allowing other services to send transaction data and receive category predictions.
 
-2. **Batch Processing**: For large volumes of transactions, a batch processing pipeline could be implemented using Apache Airflow or similar tools.
-
-3. **Real-time Processing**: For real-time categorization, the model could be integrated into a streaming pipeline using Kafka or similar technologies.
-
-4. **Monitoring and Retraining**: Implement monitoring to track model performance and set up automated retraining when performance degrades.
-
-5. **Explainability Interface**: Create a dashboard for business users to understand model decisions and feature importance.
-
-## Continuous Improvement
-
-To continuously improve the model:
-
-1. **Data Collection**: Implement a feedback loop to collect corrections from users when categories are incorrectly predicted.
-
-2. **Feature Engineering**: Experiment with different embedding models or combine embeddings with other features.
-
-3. **Model Updates**: Periodically retrain the model with new data to capture evolving transaction patterns.
-
-4. **A/B Testing**: Test model improvements against the current production model before deployment.
-
-## License
-
-[Specify license information here]
+2. **Monitoring and Retraining**: Implement monitoring to track model performance and set up automated retraining when performance degrades.
