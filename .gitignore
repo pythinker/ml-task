@@ -1,0 +1,11 @@
+# Folders
+__pycache__
+venv/
+data/
+# models/
+embeddings/
+docs/
+
+# Files
+.env
+.DS_Store

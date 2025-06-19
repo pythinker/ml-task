@@ -1,0 +1,25 @@
+Validation F1 Score (weighted): 0.7847
+
+Classification Report:
+                           precision    recall  f1-score   support
+
+                 Benefits       0.61      0.50      0.55        34
+                Donations       0.67      0.50      0.57       131
+                Education       0.78      0.52      0.62       218
+       Financial Services       0.78      0.68      0.73      1369
+           Food and Drink       0.79      0.87      0.83     17444
+                Groceries       0.77      0.73      0.75      3453
+                   Health       0.87      0.78      0.82      2288
+    Housing and Utilities       0.76      0.60      0.67      1011
+                   Income       0.90      0.85      0.87       876
+            Miscellaneous       0.39      0.12      0.18       125
+              Obligations       0.61      0.61      0.61       155
+               Recreation       0.78      0.72      0.75      2262
+                 Shopping       0.72      0.73      0.73     10945
+Transfers and Withdrawals       0.81      0.77      0.79      2707
+           Transportation       0.87      0.83      0.85      4031
+       Travel and Leisure       0.85      0.71      0.78       741
+
+                 accuracy                           0.79     47790
+                macro avg       0.75      0.66      0.69     47790
+             weighted avg       0.79      0.79      0.78     47790
